@@ -47,6 +47,7 @@ const displayPhone = phones => {
             </div>
             `
             phoneContainer.appendChild(div)
+            document.getElementById("see-more").style.display = "block"
         });
     }
 }
