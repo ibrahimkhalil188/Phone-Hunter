@@ -29,7 +29,7 @@ const displayPhone = phones => {
             div.classList.add("col")
             div.innerHTML = `
             <div class="card shadow">
-                    <img src="${phone.image}" class=" w-75 mx-auto card-img-top" alt="...">
+                    <img src="${phone.image}" class=" w-75 mx-auto card-img-top mt-3" alt="...">
                 <div class="card-body mx-auto">
                     <h3 class="card-title">${phone.phone_name}</h3>
                     <h4 class="card-text mb-3">${phone.brand}</h4>
@@ -52,34 +52,45 @@ const showDetails = phonesId => {
 }
 
 const displayPhoneDetails = phones => {
-    console.log(phones)
+    console.log(phones.others)
+
     phoneContainer.textContent = ""
     const div = document.createElement("div")
     div.innerHTML = `
         <div class="card shadow">
-                 <img src="${phones.image}" class=" w-75 mx-auto card-img-top" alt="...">
+                 <img src="${phones.image}" class=" w-75 mx-auto card-img-top mt-3" alt="...">
             <div class="card-body mx-auto">
                 <h3 class="card-title">${phones.name}</h3>
                 <h4 class="card-text mb-3">${phones.releaseDate}</h4>
-                
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-       Main Feature
-      </button>
-    </h2>
-    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
+
+                <div class="w-75">
+                <h4>Main Feature</h4>
                 <p>ChipSet: ${phones.mainFeatures.chipSet}</p>
                 <p>Display: ${phones.mainFeatures.displaySize}</p>
                 <p>Storage: ${phones.mainFeatures.memory}</p>
+                </div>
 
-      </div>
-    </div>
-  </div>
-            </div>
-        </div>
+
+                <div class="w-75">
+                <h4>Sensor Info</h4>
+                <p>Sensor: ${phones.mainFeatures.sensors}</p>
+                </div>
+                
+
+                <div class="w-75">
+                <h4>Others Info</h4>
+                <p>WALN: ${phones.others.WLAN}</p>
+                <p>Bluetooth: ${phones.others.Bluetooth}</p>
+                <p>GPS: ${phones.others.GPS}</p>
+                <p>NFC: ${phones.others.NFC}</p>
+                </div>
+
+
+            </.div>
+        </div>  
+        
+        
+      
      `
     phoneContainer.appendChild(div)
 }
