@@ -1,5 +1,6 @@
 const error = document.getElementById("error")
 const phoneContainer = document.getElementById("phone-container")
+const phoneDetails = document.getElementById("phone-Details")
 
 //Data load funtion and input validation only for string
 const PhonesData = () => {
@@ -39,7 +40,9 @@ const displayPhone = phones => {
                 <div class="card-body mx-auto">
                     <h3 class="card-title">${phone.phone_name}</h3>
                     <h4 class="card-text mb-3">${phone.brand}</h4>
-                    <button onclick="showDetails('${phone.slug}')" type="button" class="btn btn-info fs-5">See Details</button>
+
+                    <button onclick="showDetails('${phone.slug}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">See Details</button>
+  
                 </div>
             </div>
             `
@@ -57,8 +60,8 @@ const showDetails = phonesId => {
 }
 
 const displayPhoneDetails = phones => {
-    console.log(phones.slug.others)
-    phoneContainer.textContent = ""
+    document.getElementById("footer").style.display = "none"
+    phoneDetails.textContent = ""
     const sensor = phones.mainFeatures.sensors
     const div = document.createElement("div")
     div.innerHTML = `
@@ -117,5 +120,6 @@ const displayPhoneDetails = phones => {
 </.div>
 </div>  
 `
-    phoneContainer.appendChild(div)
+    phoneDetails.appendChild(div)
+    document.getElementById("footer").style.display = "block"
 }
