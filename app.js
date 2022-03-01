@@ -4,7 +4,8 @@ const phoneDetails = document.getElementById("phone-Details")
 
 //Data load funtion and input validation only for string
 const PhonesData = () => {
-    const inputField = document.getElementById("input-field").value
+    const inputdata = document.getElementById("input-field")
+    const inputField = inputdata.value
     if (!isNaN(inputField)) {
         phoneContainer.textContent = ""
         error.innerHTML = `<h2>Phone name can't be only number!!</h2>`
@@ -17,6 +18,7 @@ const PhonesData = () => {
             .then(data => displayPhone(data))
         error.innerHTML = ""
     }
+    inputdata.value = ""
 }
 
 /* search phone and show details */
@@ -47,7 +49,7 @@ const displayPhone = phones => {
             </div>
             `
             phoneContainer.appendChild(div)
-            document.getElementById("see-more").style.display = "block"
+
         });
     }
 }
@@ -59,7 +61,7 @@ const showDetails = phonesId => {
         .then(res => res.json())
         .then(data => displayPhoneDetails(data.data))
 }
-
+/* Show phone detail in a modal with accorndion */
 const displayPhoneDetails = phones => {
     document.getElementById("footer").style.display = "none"
     phoneDetails.textContent = ""
