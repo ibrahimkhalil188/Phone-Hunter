@@ -57,7 +57,7 @@ const showDetails = phonesId => {
 }
 
 const displayPhoneDetails = phones => {
-
+    console.log(phones.slug.others)
     phoneContainer.textContent = ""
     const sensor = phones.mainFeatures.sensors
     const div = document.createElement("div")
@@ -66,59 +66,56 @@ const displayPhoneDetails = phones => {
                  <img src="${phones.image}" class=" w-75 mx-auto card-img-top mt-3" alt="...">
             <div class="card-body mx-auto">
                 <h3 class="card-title">${phones.name}</h3>
-                <h4 class="card-text mb-3">${phones.releaseDate}</h4>
+                <h4 class="card-text mb-3">${phones.releaseDate ? phones.releaseDate : "No release data found"}</h4>
 
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-      Main Feature
-      </button>
-    </h2>
-    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+             <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+             Main Feature
+            </button>
+            </h2>
+            <div id="flush-collapseOne"         class="accordion-collapse collapse"         aria-labelledby="flush-headingOne"  data-bs-parent="#accordionFlushExample">
       <div class="accordion-body">
-      <p>ChipSet: ${phones.mainFeatures.chipSet}</p>
+         <p>ChipSet: ${phones.mainFeatures.chipSet}</p>
       <p>Display: ${phones.mainFeatures.displaySize}</p>
       <p>Storage: ${phones.mainFeatures.memory}</p></div>
+        </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-      Sensor Info
-      </button>
-    </h2>
-    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
-      <p>${sensor[0]}${sensor[1]}</p>
-      <p>${sensor[2]}</p>
-      <p>${sensor[3]}</p>
-      <p>${sensor[4]}</p>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+         Sensor Info
+        </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse"    aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+        <p>${sensor[0]}${sensor[1]}</p>
+        <p>${sensor[2]}</p>
+        <p>${sensor[3]}</p>
+        <p>${sensor[4]}</p>
       </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-      Others Info
-      </button>
-    </h2>
-    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
-      <p>WALN: ${phones.others.WLAN}</p>
-      <p>Bluetooth: ${phones.others.Bluetooth}</p>
-      <p>GPS: ${phones.others.GPS}</p>
-      <p>NFC: ${phones.others.NFC}</p></div>
     </div>
-  </div>
-</div>
+    <div class="accordion-item">
+            <h2 class="accordion-header"       id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+             Others Info
+             </button>
+         </h2>
+         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+        <p>WLAN: ${phones?.others?.WLAN ? phones?.others?.WLAN : "Data not founded"}</p>
+        <p>Bluetooth: ${phones?.others?.Bluetooth ? phones?.others?.Bluetooth : "Data not founded"}</p>
+        <p>GPS: ${phones?.others?.GPS ? phones?.others?.GPS : "Data not founded"}</p>
+        <p>NFC: ${phones?.others?.NFC ? phones?.others?.NFC : "Data not founded"}</p></div>
+    </div>
+    </div>
+    </div>
 
 
-            </.div>
-        </div>  
-        
-        
-      
-     `
+</.div>
+</div>  
+`
     phoneContainer.appendChild(div)
 }
